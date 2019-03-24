@@ -1,3 +1,7 @@
+# # # # # # # # # # # # # # #
+#   UNITY BASED .gitignore  #
+# # # # # # # # # # # # # # #
+
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
@@ -52,3 +56,31 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+# # # # # # # # # # # # # # #
+#  WINDOWS BASED .gitignore #
+# # # # # # # # # # # # # # #
+
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
