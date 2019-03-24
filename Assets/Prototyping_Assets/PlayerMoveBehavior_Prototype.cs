@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerMoveBehavior_Prototype : MonoBehaviour
 {
     public int playerSpeed = 10;
-    public bool isRightFacing = true;
     public int playerJump = 1250;
     public float xMove;
+    public bool isAirborn; 
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +25,10 @@ public class PlayerMoveBehavior_Prototype : MonoBehaviour
     {
         // controls
         xMove = Input.GetAxis("Horizontal");
-        if(Input.GetKeyDown(KeyCode.UpArrow))
+        if(Input.GetKeyDown(KeyCode.UpArrow) && isAirborn == false)
         {
-            Jump(); 
+            Jump();
+            isAirborn = true;
         }
         // animation (maybe)
 
@@ -41,5 +42,13 @@ public class PlayerMoveBehavior_Prototype : MonoBehaviour
     void Jump()
     {
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJump);
+    }
+
+    void OnCollisionEnter2D (Collision2D col)
+    {
+        if(col.gameObject.tag == "Floor")
+        {
+            isAirborn = false; 
+        }
     }
 }
