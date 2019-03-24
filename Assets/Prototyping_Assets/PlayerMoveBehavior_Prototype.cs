@@ -25,7 +25,7 @@ public class PlayerMoveBehavior_Prototype : MonoBehaviour
     {
         // controls
         xMove = Input.GetAxis("Horizontal");
-        if(Input.GetButtonDown("Jump"))
+        if(Input.GetKeyDown(KeyCode.UpArrow))
         {
             Jump(); 
         }
