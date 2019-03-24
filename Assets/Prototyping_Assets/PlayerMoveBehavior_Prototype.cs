@@ -7,49 +7,39 @@ public class PlayerMoveBehavior_Prototype : MonoBehaviour
     public int playerSpeed = 10;
     public bool isRightFacing = true;
     public int playerJump = 1250;
-    public float xMove; 
+    public float xMove;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        MovePlayer(); 
+        MovePlayer();
     }
 
     void MovePlayer()
     {
         // controls
         xMove = Input.GetAxis("Horizontal");
-
-        // animation 
-
-        // direction 
-        if (xMove < 0.0f && isRightFacing == false)
+        if(Input.GetButtonDown("Jump"))
         {
-            FlipPlayer(); 
+            Jump(); 
         }
-        else if (xMove > 0.0f && isRightFacing == false)
-        {
-            FlipPlayer(); 
-        }
+        // animation (maybe)
+
+        // active side (later)
+
 
         // physics 
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(xMove * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
-
     }
 
     void Jump()
     {
-
-    }
-
-    void FlipPlayer()
-    {
-        
+        GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJump);
     }
 }
