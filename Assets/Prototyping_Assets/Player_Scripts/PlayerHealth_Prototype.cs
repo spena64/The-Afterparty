@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth_Prototype : MonoBehaviour
 {
@@ -33,5 +33,6 @@ public class PlayerHealth_Prototype : MonoBehaviour
     {
         SceneManager.LoadScene("prototype_1");
         yield return null; 
+    
     }
 }
