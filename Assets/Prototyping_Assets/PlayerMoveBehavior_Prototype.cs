@@ -8,7 +8,7 @@ public class PlayerMoveBehavior_Prototype : MonoBehaviour
     public int playerJump = 1250;
     public float xMove;
     public bool isAirborn;
-    public char activeSide; 
+    public static char activeSide; 
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +55,7 @@ public class PlayerMoveBehavior_Prototype : MonoBehaviour
 
     void OnCollisionEnter2D (Collision2D col)
     {
-        if(col.gameObject.tag == "Floor")
+        if(col.gameObject.tag == "Floor" || col.gameObject.tag == "Enemy")
         {
             isAirborn = false; 
         }
@@ -82,10 +82,6 @@ public class PlayerMoveBehavior_Prototype : MonoBehaviour
         {
             activeSide = 'r';
             Debug.Log("Active side set to Right");
-        }
-        else
-        {
-            Debug.Log("Invalid character: do nothing");
         }
     } 
 }
