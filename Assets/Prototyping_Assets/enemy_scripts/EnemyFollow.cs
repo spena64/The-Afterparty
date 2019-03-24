@@ -8,8 +8,8 @@ public class EnemyFollow : MonoBehaviour
     public float speed;
     private Transform target;
 
-    private float nextActionTime = 10f;
-    public float period = 0.1f;
+    //private float nextActionTime = 10f;
+    //public float period = 0.1f;
 
 
     // Start is called before the first frame update
@@ -20,6 +20,8 @@ public class EnemyFollow : MonoBehaviour
         {
             Debug.Log("E Active side set to Top");
         }
+
+        InvokeRepeating("SetActiveSide", 2.0f, 5.0f);
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
@@ -28,18 +30,19 @@ public class EnemyFollow : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 
+        /*
         if (Time.time > nextActionTime)
         {
             nextActionTime += period;
             SetActiveSide();
         }
-        
+        */
+
     }
 
     void SetActiveSide()
     {
         int rand = UnityEngine.Random.Range(1, 4);
-
 
         if (rand == 1)
         {
