@@ -7,18 +7,24 @@ public class PlayerMoveBehavior_Prototype : MonoBehaviour
     public int playerSpeed = 10;
     public int playerJump = 1250;
     public float xMove;
-    public bool isAirborn; 
+    public bool isAirborn;
+    public char activeSide; 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        activeSide = 't';
+        if (activeSide == 't')
+        {
+            Debug.Log("Active side set to Top"); 
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         MovePlayer();
+        SetActiveSide();
     }
 
     void MovePlayer()
@@ -30,6 +36,9 @@ public class PlayerMoveBehavior_Prototype : MonoBehaviour
             Jump();
             isAirborn = true;
         }
+
+
+
         // animation (maybe)
 
         // active side (later)
@@ -51,4 +60,32 @@ public class PlayerMoveBehavior_Prototype : MonoBehaviour
             isAirborn = false; 
         }
     }
+
+    void SetActiveSide()
+    {
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            activeSide = 't';
+            Debug.Log("Active side set to Top");
+        }
+        else if(Input.GetKeyDown(KeyCode.A))
+        {
+            activeSide = 'l';
+            Debug.Log("Active side set to Left");
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            activeSide = 'b';
+            Debug.Log("Active side set to Bottom");
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            activeSide = 'r';
+            Debug.Log("Active side set to Right");
+        }
+        else
+        {
+            Debug.Log("Invalid character: do nothing");
+        }
+    } 
 }
